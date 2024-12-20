@@ -1,15 +1,3 @@
-# Code of your exercise
-
-Put here all the code created for this exercise
-
-# Answer:
-## Cyclomatic Complexity avec JavaParser
-Le code ci dessous est déjà implémenté dans src/main/java/fr;istic.vv
-## Code
-
-Voici le code pour calculer la complexité cyclomatique:
-
-```java
 package fr.istic.vv;
 
 import com.github.javaparser.StaticJavaParser;
@@ -70,6 +58,7 @@ public class CyclomaticComplexityCalculator {
         reportWriter.close();
         System.out.println("Report generated at: " + outputReport);
 
+        // Generate the histogram as text
         System.out.println("\nCyclomatic Complexity Histogram:");
         complexityHistogram.forEach((cc, count) ->
                 System.out.println("Complexity " + cc + ": " + count + " method(s)"));
@@ -138,76 +127,3 @@ public class CyclomaticComplexityCalculator {
         }
     }
 }
-```
-
----
-
-## Exécution
-
-### Compilation
-
-```bash
-mvn clean compile
-```
-
-### Pour Lancer le programme dans mon cas:
-
-```bash
-java -cp target/classes:/home/diallo/.m2/repository/com/github/javaparser/javaparser-core/3.16.2/javaparser-core-3.16.2.jar fr.istic.vv.CyclomaticComplexityCalculator src/main/java rapport_cc.txt
-```
-
-- **`src/main/java`** : Le dossier contenant les fichiers source à analyser.
-- **`rapport_cc.txt`** : Fichier contenant les résultats du calcul de complexité cyclomatique.
-
----
-
-## Résultats
-
-### Rapport généré
-Le fichier `rapport_cc.txt` contient une liste de méthodes avec leurs complexités cyclomatiques. Voici le contenu :
-
-```
-Class,Package,Method,Parameters,Cyclomatic Complexity
-Person,fr.istic.vv,getName,,1
-CyclomaticComplexityCalculator,fr.istic.vv,main,String[],4
-CyclomaticComplexityCalculator,fr.istic.vv,findJavaFiles,File,1
-CyclomaticComplexityCalculator,fr.istic.vv,calculateCyclomaticComplexity,MethodDeclaration,1
-CyclomaticComplexityCalculator,fr.istic.vv,visit,IfStmt, Void,1
-CyclomaticComplexityCalculator,fr.istic.vv,visit,ForStmt, Void,1
-CyclomaticComplexityCalculator,fr.istic.vv,visit,ForEachStmt, Void,1
-CyclomaticComplexityCalculator,fr.istic.vv,visit,WhileStmt, Void,1
-CyclomaticComplexityCalculator,fr.istic.vv,visit,DoStmt, Void,1
-CyclomaticComplexityCalculator,fr.istic.vv,visit,SwitchEntry, Void,1
-CyclomaticComplexityCalculator,fr.istic.vv,visit,CatchClause, Void,1
-CyclomaticComplexityCalculator,fr.istic.vv,getComplexity,,1
-NoGetterDetector,fr.istic.vv,main,String[],5
-NoGetterDetector,fr.istic.vv,findJavaFiles,File,1
-NoGetterDetector,fr.istic.vv,isPublicGetter,MethodDeclaration,1
-NoGetterDetector,fr.istic.vv,capitalize,String,1
-Main,fr.istic.vv,main,String[],3
-PublicElementsPrinter,fr.istic.vv,visit,CompilationUnit, Void,2
-PublicElementsPrinter,fr.istic.vv,visitTypeDeclaration,TypeDeclaration<?>, Void,5
-PublicElementsPrinter,fr.istic.vv,visit,ClassOrInterfaceDeclaration, Void,1
-PublicElementsPrinter,fr.istic.vv,visit,EnumDeclaration, Void,1
-PublicElementsPrinter,fr.istic.vv,visit,MethodDeclaration, Void,2
-
-```
-
-### Histogramme
-En plus, un histogramme des complexités est affiché dans le terminal :
-
-```
-Cyclomatic Complexity Histogram:
-Complexity 1: 16 method(s)
-Complexity 2: 2 method(s)
-Complexity 3: 1 method(s)
-Complexity 4: 1 method(s)
-Complexity 5: 2 method(s)
-```
-
----
-
-## Conclusion
-
-Le programme calcule bien la complexité cyclomatique des méthodes dans un projet Java. Le rapport CSV et l’histogramme permettent d’analyser les zones de code qui peuvent être simplifiées ou optimisées pour une meilleure maintenabilité.
-

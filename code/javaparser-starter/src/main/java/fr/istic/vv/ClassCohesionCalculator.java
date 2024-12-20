@@ -1,16 +1,3 @@
-# Code of your exercise
-
-Put here all the code created for this exercise
-
-# Answer:
-
-## Class Cohesion avec JavaParser
-
-## Implémentation
-
-Voici le code pour calculer la TCC avec JavaParser :
-
-```java
 package fr.istic.vv;
 
 import com.github.javaparser.StaticJavaParser;
@@ -121,58 +108,3 @@ public class ClassCohesionCalculator {
         return accessedFields;
     }
 }
-```
-
----
-
-## Exécution
-
-### Compilation
-
-```bash
-mvn clean compile
-```
-
-### Lancer le programme
-
-```bash
-java -cp target/classes:/home/diallo/.m2/repository/com/github/javaparser/javaparser-core/3.16.2/javaparser-core-3.16.2.jar fr.istic.vv.ClassCohesionCalculator src/main/java rapport_tcc.txt
-```
-
-- **`src/main/java`** : Le dossier contenant les fichiers source à analyser.
-- **`rapport_tcc.txt`** : Fichier contenant les résultats des calculs TCC.
-
----
-
-## Résultats
-
-### Rapport généré
-Le fichier `rapport_tcc.txt` contient une liste des classes avec leurs valeurs TCC. Voici un exemple :
-
-```
-Class,Package,TCC
-Person,fr.istic.vv,1.00
-CyclomaticComplexityCalculator,fr.istic.vv,0.00
-CyclomaticComplexityVisitor,fr.istic.vv,1.00
-NoGetterDetector,fr.istic.vv,0.00
-Main,fr.istic.vv,1.00
-ClassCohesionCalculator,fr.istic.vv,0.30
-PublicElementsPrinter,fr.istic.vv,0.00
-
-```
-
-### Histogramme
-En plus, un histogramme des valeurs TCC est affiché dans le terminal. Exemple :
-
-```
-
-Class Cohesion Histogram:
-Class NoGetterDetector TCC: 0.0
-Class CyclomaticComplexityVisitor TCC: 1.0
-Class CyclomaticComplexityCalculator TCC: 0.0
-Class ClassCohesionCalculator TCC: 0.3
-Class PublicElementsPrinter TCC: 0.0
-Class Person TCC: 1.0
-Class Main TCC: 1.0
-```
-
